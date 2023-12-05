@@ -35,7 +35,7 @@ const SignUpForm = () => {
             await axios.post('/dj-rest-auth/registration/', signUpData)
             history.push('/signin');
         } catch (err) {
-            setErrors(err.response?.data)
+            setErrors(err.response?.data);
         }
     };
 
@@ -57,16 +57,13 @@ const SignUpForm = () => {
                                 value={username}
                                 onChange={handleChange}
                             />
-
                         </Form.Group>
-                        {errors.username?.map((message, idx) =>
-                            <Alert variant="warning" key={idx}>{message}</Alert>
-                        )}
-                        {/* // we will use alert bootstrap component to display any alert mssgs
-but we have to do is map over the array of error for each key in error state
-to do this we use conditional chaining to check if the username key is in the error subject
-and if so that will produce alert
-through display of */}
+                        {errors.username?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
+
 
                         <Form.Group controlId="password1">
                             <Form.Label className="d-none">Password</Form.Label>
@@ -79,6 +76,11 @@ through display of */}
                                 onChange={handleChange}
                             />
                         </Form.Group>
+                        {errors.password1?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
 
                         <Form.Group controlId="password2">
                             <Form.Label className="d-none">Repeat Password</Form.Label>
@@ -91,9 +93,19 @@ through display of */}
                                 onChange={handleChange}
                             />
                         </Form.Group>
+                        {errors.password2?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
                         <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
                             Sign up
                         </Button>
+                        {errors.non_field_errors?.map((message, idx) => (
+                            <Alert key={idx} variant="warning" classname="mt-3">
+                                {message}
+                            </Alert>
+                        ))}
                     </Form>
 
                 </Container>
