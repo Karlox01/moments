@@ -17,7 +17,7 @@ import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 function SignInForm() {
-    const setCurrentUser = useSetCurrentUser
+    const setCurrentUser = useSetCurrentUser();
 
     const [signInData, setSignInData] = useState({
         username: "",
@@ -35,6 +35,7 @@ function SignInForm() {
             setCurrentUser(data.user)
             history.push("/");
         } catch (err) {
+            console.error('Error during login', err);
             setErrors(err.response?.data);
         }
     };
