@@ -10,6 +10,7 @@ import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import PostCreateForm from './pages/posts/PostCreateForm';
 import PostPage from './pages/posts/PostPage';
+import PostsPage from './pages/posts/PostsPage';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
           <NavBar />
           <Container className={styles.Main}>
             <Switch>
-              <Route exact path="/" render={() => <h1>Home page</h1>} />
+              <Route exact path="/" render={() => <PostsPage?>} />
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route exact path="/posts/create" render={() => <PostCreateForm />} />
