@@ -9,6 +9,7 @@ import { ProfileDataProvider } from './contexts/ProfileDataContext';
 
 
 ReactDOM.render(
+  // before you deploy make sure to remove strictmove to avoid errors
   <React.StrictMode>
     <Router>
       <CurrentUserProvider>
